@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Expertise – Perunding Ihsan Sdn Bhd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#05060b;
+      --bg-soft:#0b1020;
+      --surface:#0b1020;
+      --surface-soft:#151826;
+      --accent:#f59e0b;
+      --accent-soft:rgba(245,158,11,0.14);
+      --text:#f9fafb;
+      --muted:#9ca3af;
+      --border:#1f2937;
+      --radius-lg:18px;
+      --radius-xl:24px;
+      --shadow-soft:0 22px 55px rgba(0,0,0,0.6);
+    }
+
+    *,
+    *::before,
+    *::after{
+      box-sizing:border-box;
+    }
+
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:"Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:radial-gradient(circle at top left,#111827,#020617);
+      color:var(--text);
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:100%;
+      max-width:1180px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* ========== TOPBAR / NAVIGATION ========== */
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:40;
+      background:rgba(5,6,11,0.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(15,23,42,0.9);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 0 10px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--text);
+    }
+
+    /* logo style */
+    .brand-logo{
+      border-radius:12px;
+      background:#ffffff;
+      padding:4px 6px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .logo{
+      height:30px;
+      width:auto;
+      display:block;
+    }
+
+    .brand-text-wrap{
+      display:flex;
+      flex-direction:column;
+      line-height:1.2;
+    }
+
+    .brand-name{
+      font-weight:700;
+      font-size:.95rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .brand-tagline{
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+
+    .nav a{
+      font-size:.8rem;
+      font-weight:500;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+      text-decoration:none;
+      padding:4px 0;
+    }
+
+    .nav a:hover{
+      color:var(--text);
+    }
+
+    .nav a.nav-active{
+      color:var(--accent);
+    }
+
+    .nav-toggle{
+      display:none;
+      flex-direction:column;
+      gap:4px;
+      background:none;
+      border:none;
+      padding:6px 0 6px 10px;
+      margin-left:10px;
+      cursor:pointer;
+    }
+
+    .nav-toggle span{
+      display:block;
+      width:20px;
+      height:2px;
+      border-radius:99px;
+      background:var(--text);
+    }
+
+    @media (max-width: 840px){
+      .nav{
+        position:fixed;
+        inset:56px 16px auto 16px;
+        flex-direction:column;
+        align-items:flex-start;
+        padding:16px 16px 14px;
+        background:rgba(15,23,42,0.98);
+        border-radius:18px;
+        border:1px solid rgba(31,41,55,0.9);
+        box-shadow:var(--shadow-soft);
+        max-height:0;
+        overflow:hidden;
+        opacity:0;
+        pointer-events:none;
+        transition:max-height .22s ease, opacity .16s ease;
+      }
+
+      .nav-open{
+        max-height:260px;
+        opacity:1;
+        pointer-events:auto;
+      }
+
+      .nav-toggle{
+        display:flex;
+      }
+
+      .topbar-inner{
+        padding:10px 0 9px;
+      }
+    }
+
+    /* ========== GENERIC ELEMENTS ========== */
+
+    .section{
+      padding:80px 0;
+    }
+
+    .section-alt{
+      background:radial-gradient(circle at center, rgba(15,23,42,0.95), rgba(2,6,23,0.9));
+    }
+
+    .section-eyebrow{
+      text-transform:uppercase;
+      letter-spacing:.23em;
+      font-size:.75rem;
+      color:var(--accent);
+      margin-bottom:14px;
+      font-weight:600;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 10px;
+      line-height:1.15;
+    }
+
+    h1{
+      font-size:clamp(2.2rem, 3.1vw, 3rem);
+      letter-spacing:.02em;
+    }
+
+    h2{
+      font-size:clamp(1.5rem, 2.3vw, 2.1rem);
+    }
+
+    h3{
+      font-size:1rem;
+    }
+
+    p{
+      margin:0 0 10px;
+      font-size:1rem;
+      line-height:1.7;
+      color:var(--text);
+      text-align:justify;
+    }
+
+    .lead{
+      font-size:1.05rem;
+      max-width:640px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 12px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.7);
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+    }
+
+    .pill-dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:var(--accent);
+    }
+
+    .badge-soft{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:3px 10px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.9);
+      border:1px solid rgba(55,65,81,0.9);
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 20px;
+      border-radius:999px;
+      border:1px solid transparent;
+      text-decoration:none;
+      font-size:.85rem;
+      font-weight:600;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      cursor:pointer;
+      gap:8px;
+      white-space:nowrap;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#f97316,#fde047);
+      color:#111827;
+      box-shadow:0 18px 35px rgba(15,23,42,0.8);
+    }
+
+    .btn-primary:hover{
+      filter:brightness(1.05);
+    }
+
+    /* ========== HERO ========== */
+
+    .subpage-hero{
+      position:relative;
+      padding:90px 0 70px;
+      background:
+        radial-gradient(circle at top left, rgba(245,158,11,0.32), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(30,64,175,0.45), transparent 60%),
+        linear-gradient(to bottom,#020617,#020617);
+      overflow:hidden;
+    }
+
+    .subpage-hero::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background:url("images/projects.png") right center/cover no-repeat;
+      opacity:0.16;
+      mix-blend-mode:screen;
+      pointer-events:none;
+    }
+
+    .subpage-hero-inner{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+      gap:36px;
+      align-items:flex-start;
+    }
+
+    .hero-summary-card{
+  background:rgba(15,23,42,0.96);
+  border-radius:var(--radius-xl);
+  padding:18px 20px 16px;
+  border:1px solid rgba(55,65,81,0.9);
+  box-shadow:var(--shadow-soft);
+  max-width:420px;       /* keep it nicely contained on desktop */
+  margin-left:auto;      /* hugs the right hand side */
+  text-align:left;
+  box-sizing:border-box;
+}
+
+/* Make sure text wraps and stays inside */
+.hero-summary-card p,
+.hero-stat-label,
+.hero-stat-value{
+  text-align:left;
+  word-wrap:break-word;
+}
+
+
+    .hero-summary-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px 18px;
+      margin-top:10px;
+    }
+
+    .hero-stat{
+      flex:0 0 auto;
+      min-width:160px;
+    }
+
+   .hero-stat-label{
+  font-size:.75rem;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  color:var(--muted);
+}
+
+.hero-stat-value{
+  font-weight:600;
+  font-size:.9rem;
+  line-height:1.5;
+  color:var(--text);
+}
+
+
+   @media (max-width: 880px){
+  .subpage-hero-inner{
+    grid-template-columns:1fr;
+  }
+
+  .hero-summary-card{
+    max-width:100%;
+    margin-top:22px;   /* card drops below main text with spacing */
+  }
+}
+
+/* Small screens: stack stats vertically */
+@media (max-width: 640px){
+  .hero-summary-row{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .hero-stat{
+    min-width:100%;
+  }
+}
+
+
+    @media (max-width: 640px){
+      .subpage-hero{
+        padding:78px 0 56px;
+      }
+
+      h1{
+        font-size:2rem;
+      }
+
+      .lead{
+        font-size:.98rem;
+      }
+    }
+
+    /* ========== CONTENT SECTIONS ========== */
+
+    .section-header{
+      max-width:780px;
+      margin:0 auto 28px;
+    }
+
+    .expertise-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .expertise-card{
+      background:rgba(15,23,42,0.97);
+      border-radius:var(--radius-lg);
+      padding:18px 18px 16px;
+      border:1px solid rgba(55,65,81,0.9);
+      box-shadow:0 18px 45px rgba(0,0,0,0.6);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .expertise-card-title{
+      font-size:1rem;
+      font-weight:600;
+    }
+
+    .expertise-card-body{
+      font-size:.95rem;
+      text-align:justify;
+    }
+
+    .expertise-list{
+      list-style:none;
+      padding:0;
+      margin:6px 0 0;
+      font-size:.92rem;
+    }
+
+    .expertise-list li{
+      position:relative;
+      padding-left:14px;
+      margin-bottom:4px;
+      text-align:justify;
+    }
+
+    .expertise-list li::before{
+      content:"•";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--accent);
+      font-size:.9rem;
+    }
+
+    @media (max-width: 960px){
+      .expertise-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 640px){
+      .expertise-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,1.1fr);
+      gap:26px;
+      align-items:flex-start;
+    }
+
+    @media (max-width: 840px){
+      .two-col{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .info-table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:.9rem;
+      background:rgba(15,23,42,0.97);
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      border:1px solid rgba(55,65,81,0.9);
+      box-shadow:0 18px 45px rgba(0,0,0,0.6);
+    }
+
+    .info-table th,
+    .info-table td{
+      padding:10px 14px;
+      text-align:left;
+      border-bottom:1px solid rgba(31,41,55,0.9);
+    }
+
+    .info-table th{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+    }
+
+    .info-table td{
+      font-size:.95rem;
+    }
+
+    .info-table tr:last-child td{
+      border-bottom:none;
+    }
+
+    /* ========== CTA & FOOTER ========== */
+
+    .cta-strip{
+      padding:40px 0 50px;
+      border-top:1px solid rgba(15,23,42,0.9);
+      background:#020617;
+    }
+
+    .cta-inner{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .cta-title{
+      font-size:1.1rem;
+      font-weight:600;
+    }
+
+    .cta-sub{
+      font-size:.95rem;
+      color:var(--text);
+      text-align:justify;
+    }
+
+    @media (max-width: 640px){
+      .cta-title{
+        font-size:1rem;
+      }
+    }
+
+    .site-footer{
+      border-top:1px solid rgba(31,41,55,0.9);
+      background:#020617;
+      margin-top:auto;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:18px 20px 20px;
+      font-size:.8rem;
+      color:var(--muted);
+    }
+
+    .back-to-top{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:.8rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .back-to-top:hover{
+      color:var(--accent);
+    }
+
+    @media (max-width: 640px){
+      .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+    /* Fix core disciplines card overflow */
+.hero-summary-card{
+  max-width:460px;                 /* slightly wider */
+  padding:18px 26px 18px 22px;     /* more right padding */
+  box-sizing:border-box;
+}
+
+/* Make sure all text inside wraps nicely */
+.hero-summary-card *,
+.hero-summary-card p,
+.hero-stat-label,
+.hero-stat-value{
+  overflow-wrap:break-word;
+  word-wrap:break-word;
+}
+
+/* Slightly smaller, more compact lines for the bold text */
+.hero-stat-value{
+  font-size:.88rem;
+  line-height:1.4;
+}
+
+  </style>
+</head>
+<body id="top">
+  <header class="topbar" id="top">
+    <div class="container topbar-inner">
+      <a href="index.html#home" class="brand">
+        <div class="brand-logo">
+          <img src="images/logo.png" alt="Perunding Ihsan Sdn Bhd" class="logo">
+        </div>
+        <div class="brand-text-wrap">
+          <span class="brand-name">Perunding Ihsan</span>
+          <span class="brand-tagline">Project Management &amp; Consulting Engineers</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html#home">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="service.html">Our Service</a>
+        <a href="our-work.html">Our Work</a>
+        <a href="expertise.html" class="nav-active">Expertise</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="subpage-hero">
+      <div class="container subpage-hero-inner">
+        <div>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span>Technical expertise</span>
+          </div>
+          <h1>Engineering expertise built on real project delivery.</h1>
+          <p class="lead">
+            Perunding Ihsan combines civil, structural, highway, infrastructure and marine engineering capabilities
+            with hands-on project management, contract administration and supervision.
+          </p>
+          <p>
+            The firm’s experience ranges from feasibility studies and planning through detailed design, tender
+            documentation and construction support, allowing projects to be delivered safely, efficiently and in line
+            with Malaysian standards.
+          </p>
+        </div>
+
+        <aside class="hero-summary-card">
+          <p style="text-transform:uppercase; letter-spacing:.18em; font-size:.8rem; color:var(--muted); margin-bottom:6px;">
+            Core disciplines
+          </p>
+          <div class="hero-summary-row">
+            <div class="hero-stat">
+              <div class="hero-stat-label">Project management &amp; supervision</div>
+              <div class="hero-stat-value">End-to-end coordination from study to completion.</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-label">Civil &amp; structural engineering</div>
+              <div class="hero-stat-value">Highways, bridges, buildings and infrastructure works.</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-label">Marine &amp; coastal works</div>
+              <div class="hero-stat-value">Revetments, jetties and shoreline protection projects.</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PRACTICE DISCIPLINES -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Practice disciplines</div>
+          <h2>Disciplines that support transport, building, infrastructure and coastal projects.</h2>
+          <p>
+            Perunding Ihsan’s technical scope covers project management and the full range of civil and structural
+            design work needed to deliver public and private sector projects across Malaysia.
+          </p>
+        </div>
+
+        <div class="expertise-grid">
+          <article class="expertise-card">
+            <div class="badge-soft">Project management &amp; supervision</div>
+            <div class="expertise-card-title">Project leadership and coordination</div>
+            <div class="expertise-card-body">
+              <p>
+                Coordination of multi-disciplinary design teams, programming of activities, reporting to clients and
+                authorities, and monitoring of progress, quality and risk from commencement to completion.
+              </p>
+            </div>
+          </article>
+
+          <article class="expertise-card">
+            <div class="badge-soft">Highways &amp; transportation</div>
+            <div class="expertise-card-title">Roads, interchanges and access</div>
+            <div class="expertise-card-body">
+              <p>
+                Planning and design of expressways, interchanges, urban roads and access routes including traffic
+                analysis, geometric design, pavement design and roadside safety features.
+              </p>
+            </div>
+          </article>
+
+          <article class="expertise-card">
+            <div class="badge-soft">Structural &amp; buildings</div>
+            <div class="expertise-card-title">Bridges, buildings and retaining structures</div>
+            <div class="expertise-card-body">
+              <p>
+                Structural design of bridges, flyovers, buildings and retaining structures, covering foundations,
+                superstructure, stability checks and constructability for permanent and temporary works.
+              </p>
+            </div>
+          </article>
+
+          <article class="expertise-card">
+            <div class="badge-soft">Infrastructure &amp; utilities</div>
+            <div class="expertise-card-title">Earthworks, drainage and services</div>
+            <div class="expertise-card-body">
+              <p>
+                Platform earthworks, road platforms, stormwater drainage, culverts and utility corridors to support
+                townships, industrial facilities and mixed developments.
+              </p>
+            </div>
+          </article>
+
+          <article class="expertise-card">
+            <div class="badge-soft">Marine &amp; coastal</div>
+            <div class="expertise-card-title">Revetments and coastal protection</div>
+            <div class="expertise-card-body">
+              <p>
+                Concept and detailed design of revetments, seawalls, jetties, access roads and associated drainage
+                systems for coastal and waterfront developments.
+              </p>
+            </div>
+          </article>
+
+          <article class="expertise-card">
+            <div class="badge-soft">Building assessment</div>
+            <div class="expertise-card-title">Condition surveys and strengthening</div>
+            <div class="expertise-card-body">
+              <p>
+                Visual assessments, structural evaluation and recommendations for remedial and strengthening works to
+                support building owners and operators.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICE CAPABILITIES & TOOLS -->
+    <section class="section">
+      <div class="container two-col">
+        <div>
+          <div class="section-eyebrow">Service capabilities</div>
+          <h2>Capabilities that cover the full life cycle of an engineering project.</h2>
+          <p>
+            The firm provides consulting services from early feasibility through to construction supervision so that
+            clients can engage a single team for technical, contractual and on-site support.
+          </p>
+
+          <div class="expertise-card" style="margin-top:16px;">
+            <div class="expertise-card-title">Feasibility studies &amp; planning</div>
+            <div class="expertise-card-body">
+              <ul class="expertise-list">
+                <li>Pre-investment studies and option assessments for proposed routes and sites.</li>
+                <li>Technical, environmental and land use considerations for highways and infrastructure.</li>
+                <li>High-level cost estimates and implementation strategies to support decision making.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="expertise-card" style="margin-top:14px;">
+            <div class="expertise-card-title">Engineering design</div>
+            <div class="expertise-card-body">
+              <ul class="expertise-list">
+                <li>Topographic survey and subsoil investigation inputs for design.</li>
+                <li>Detailed design of alignments, structures, drainage and platforms.</li>
+                <li>Preparation of design drawings, technical specifications and cost estimates.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="expertise-card" style="margin-top:14px;">
+            <div class="expertise-card-title">Tender arrangements &amp; contract administration</div>
+            <div class="expertise-card-body">
+              <ul class="expertise-list">
+                <li>Preparation of tender documents and schedules of quantities.</li>
+                <li>Tender evaluation and recommendations to clients.</li>
+                <li>Contract administration, variation assessments and technical advice during implementation.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="expertise-card" style="margin-top:14px;">
+            <div class="expertise-card-title">Construction supervision &amp; site services</div>
+            <div class="expertise-card-body">
+              <ul class="expertise-list">
+                <li>Resident engineer / supervision team for highway, bridge and infrastructure works.</li>
+                <li>Monitoring of workmanship, materials and compliance with drawings and specifications.</li>
+                <li>Site meetings, inspections, testing and support during completion and handover.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-eyebrow">Tools &amp; standards</div>
+          <h2>Design tools and standards used in delivering projects.</h2>
+          <p>
+            Engineering work is carried out using recognised Malaysian and international standards supported by
+            dedicated software for civil and structural design, modelling and documentation.
+          </p>
+
+          <table class="info-table" style="margin-top:16px;">
+            <tbody>
+              <tr>
+                <th style="width:40%;">Design approach</th>
+                <td>
+                  Highway, structural and infrastructure designs prepared to relevant Malaysian and international
+                  codes, with consideration of safety, constructability and lifecycle performance.
+                </td>
+              </tr>
+              <tr>
+                <th>Analysis &amp; design tools</th>
+                <td>
+                  Use of specialised civil and structural engineering software alongside in-house tools for
+                  alignment geometry, earthworks quantities and structural analysis.
+                </td>
+              </tr>
+              <tr>
+                <th>Documentation</th>
+                <td>
+                  Digital production of drawings, schedules and tender documentation to support efficient review,
+                  coordination with authorities and clear communication with contractors.
+                </td>
+              </tr>
+              <tr>
+                <th>Quality &amp; coordination</th>
+                <td>
+                  Internal checking procedures and coordination with architects, planners, M&amp;E engineers and other
+                  specialists to maintain consistency across project stages.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-strip">
+      <div class="container cta-inner">
+        <div>
+          <div class="cta-title">Need technical input for an upcoming project?</div>
+          <div class="cta-sub">
+            Share your project details and the team at Perunding Ihsan can recommend a suitable combination of
+            studies, designs and site services based on the firm’s experience.
+          </div>
+        </div>
+        <a href="contact.html" class="btn btn-primary">Talk to our team</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Perunding Ihsan Sdn Bhd. All rights reserved.</p>
+      <a href="#top" class="back-to-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+
+    if (navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        nav.classList.toggle('nav-open');
+      });
+
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('nav-open');
+        });
+      });
+    }
+
+    // Current year in footer
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+  </script>
+</body>
+</html>

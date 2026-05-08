@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Services – Perunding Ihsan Sdn Bhd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#05060b;
+      --bg-soft:#0b1020;
+      --surface:#0b1020;
+      --surface-soft:#151826;
+      --accent:#f59e0b;
+      --accent-soft:rgba(245,158,11,0.14);
+      --text:#f9fafb;
+      --muted:#9ca3af;
+      --border:#1f2937;
+      --radius-lg:18px;
+      --radius-xl:24px;
+      --shadow-soft:0 22px 55px rgba(0,0,0,0.6);
+    }
+
+    *,
+    *::before,
+    *::after{
+      box-sizing:border-box;
+    }
+
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:"Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:radial-gradient(circle at top left,#111827,#020617);
+      color:var(--text);
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:100%;
+      max-width:1180px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* ========== TOPBAR / NAVIGATION ========== */
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:40;
+      background:rgba(5,6,11,0.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(15,23,42,0.9);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 0 10px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--text);
+    }
+
+    /* use this logo style from now on */
+    .brand-logo{
+      border-radius:12px;
+      background:#ffffff; /* makes the white logo look intentional */
+      padding:4px 6px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .logo{
+      height:30px;
+      width:auto;
+      display:block;
+    }
+
+    .brand-text-wrap{
+      display:flex;
+      flex-direction:column;
+      line-height:1.2;
+    }
+
+    .brand-name{
+      font-weight:700;
+      font-size:.95rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .brand-tagline{
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+
+    .nav a{
+      font-size:.8rem;
+      font-weight:500;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+      text-decoration:none;
+      padding:4px 0;
+    }
+
+    .nav a:hover{
+      color:var(--text);
+    }
+
+    .nav a.nav-active{
+      color:var(--accent);
+    }
+
+    /* Mobile nav toggle */
+
+    .nav-toggle{
+      display:none;
+      flex-direction:column;
+      gap:4px;
+      background:none;
+      border:none;
+      padding:6px 0 6px 10px;
+      margin-left:10px;
+      cursor:pointer;
+    }
+
+    .nav-toggle span{
+      display:block;
+      width:20px;
+      height:2px;
+      border-radius:99px;
+      background:var(--text);
+    }
+
+    @media (max-width: 840px){
+      .nav{
+        position:fixed;
+        inset:56px 16px auto 16px;
+        flex-direction:column;
+        align-items:flex-start;
+        padding:16px 16px 14px;
+        background:rgba(15,23,42,0.98);
+        border-radius:18px;
+        border:1px solid rgba(31,41,55,0.9);
+        box-shadow:var(--shadow-soft);
+        max-height:0;
+        overflow:hidden;
+        opacity:0;
+        pointer-events:none;
+        transition:max-height .22s ease, opacity .16s ease;
+      }
+
+      .nav-open{
+        max-height:260px;
+        opacity:1;
+        pointer-events:auto;
+      }
+
+      .nav-toggle{
+        display:flex;
+      }
+
+      .topbar-inner{
+        padding:10px 0 9px;
+      }
+    }
+
+    /* ========== GENERIC ELEMENTS ========== */
+
+    .section{
+      padding:80px 0;
+    }
+
+    .section-alt{
+      background:radial-gradient(circle at center, rgba(15,23,42,0.95), rgba(2,6,23,0.9));
+    }
+
+    .section-eyebrow{
+      text-transform:uppercase;
+      letter-spacing:.23em;
+      font-size:.75rem;
+      color:var(--accent);
+      margin-bottom:14px;
+      font-weight:600;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 10px;
+      line-height:1.15;
+    }
+
+    h1{
+      font-size:clamp(2.2rem, 3.1vw, 3rem);
+      letter-spacing:.02em;
+    }
+
+    h2{
+      font-size:clamp(1.5rem, 2.3vw, 2.1rem);
+    }
+
+    h3{
+      font-size:1rem;
+    }
+
+    p{
+      margin:0 0 10px;
+      font-size:1rem;
+      line-height:1.7;
+      color:var(--text);      /* white */
+      text-align:justify;     /* justified */
+    }
+
+    .lead{
+      font-size:1.05rem;
+      max-width:640px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 20px;
+      border-radius:999px;
+      border:1px solid transparent;
+      text-decoration:none;
+      font-size:.85rem;
+      font-weight:600;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      cursor:pointer;
+      gap:8px;
+      white-space:nowrap;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#f97316,#fde047);
+      color:#111827;
+      box-shadow:0 18px 35px rgba(15,23,42,0.8);
+    }
+
+    .btn-primary:hover{
+      filter:brightness(1.05);
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 12px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.7);
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+    }
+
+    .pill-dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:var(--accent);
+    }
+
+    /* ========== SERVICES HERO ========== */
+
+    .subpage-hero{
+      position:relative;
+      padding:90px 0 70px;
+      background:
+        radial-gradient(circle at top left, rgba(245,158,11,0.3), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(30,64,175,0.45), transparent 60%),
+        linear-gradient(to bottom,#020617,#020617);
+      overflow:hidden;
+    }
+
+    .subpage-hero::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background:url("images/projects.png") right center/cover no-repeat;
+      opacity:0.16;
+      mix-blend-mode:screen;
+      pointer-events:none;
+    }
+
+    .subpage-hero-inner{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+      gap:36px;
+      align-items:flex-start;
+    }
+
+.hero-media-card{
+  background:rgba(15,23,42,0.96);
+  border-radius:var(--radius-x2);
+  padding:0;                     /* full-bleed image */
+  border:1px solid rgba(55,65,81,0.9);
+  box-shadow:var(--shadow-soft);
+  overflow:hidden;
+}
+
+.hero-media-img{
+  width:100%;
+  height:450px;                  /* BIG image on desktop */
+  background:url("images/service.png") center/cover no-repeat;
+}
+
+/* smaller height on mobile so it still looks good */
+@media (max-width: 1000px){
+  .hero-media-img{
+    height:230px;
+  }
+}
+
+
+    .hero-media-caption{
+      margin-top:8px;
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+    }
+
+    @media (max-width: 880px){
+      .subpage-hero-inner{
+        grid-template-columns:1fr;
+      }
+
+      .hero-media-img{
+        height:200px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .subpage-hero{
+        padding:78px 0 56px;
+      }
+
+      h1{
+        font-size:2rem;
+      }
+
+      .lead{
+        font-size:.98rem;
+      }
+    }
+
+    /* ========== SERVICES GRID ========== */
+
+    .section-header{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      margin-bottom:26px;
+      max-width:720px;
+    }
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .service-card{
+      background:rgba(15,23,42,0.97);
+      border-radius:var(--radius-lg);
+      padding:18px 18px 16px;
+      border:1px solid rgba(55,65,81,0.95);
+      box-shadow:0 18px 45px rgba(0,0,0,0.6);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .service-tag{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+    }
+
+    .service-title{
+      font-size:1rem;
+      font-weight:600;
+    }
+
+    .service-points{
+      list-style:none;
+      padding:0;
+      margin:6px 0 0;
+      font-size:.92rem;
+    }
+
+    .service-points li{
+      position:relative;
+      padding-left:14px;
+      margin-bottom:4px;
+      text-align:justify;
+    }
+
+    .service-points li::before{
+      content:"•";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--accent);
+      font-size:.9rem;
+    }
+
+    @media (max-width: 900px){
+      .card-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 640px){
+      .card-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    /* ========== SECTOR TABLE ========== */
+
+    .table-scroll{
+      width:100%;
+      overflow-x:auto;
+      padding-bottom:4px;
+    }
+
+    .cap-table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:560px;
+      font-size:.9rem;
+    }
+
+    .cap-table thead{
+      background:rgba(15,23,42,0.98);
+    }
+
+    .cap-table th,
+    .cap-table td{
+      padding:10px 12px;
+      border-bottom:1px solid rgba(31,41,55,0.9);
+      vertical-align:top;
+      text-align:justify;
+    }
+
+    .cap-table th{
+      text-align:left;
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .cap-table td{
+      color:var(--text);  /* white text in table */
+      line-height:1.6;
+    }
+
+    .cap-table tbody tr:nth-child(even){
+      background:rgba(15,23,42,0.82);
+    }
+
+    /* ========== CTA & FOOTER ========== */
+
+    .cta-strip{
+      padding:40px 0 50px;
+      border-top:1px solid rgba(15,23,42,0.9);
+      background:#020617;
+    }
+
+    .cta-inner{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .cta-title{
+      font-size:1.1rem;
+      font-weight:600;
+    }
+
+    .cta-sub{
+      font-size:.95rem;
+      color:var(--text);
+      text-align:justify;
+    }
+
+    @media (max-width: 640px){
+      .cta-title{
+        font-size:1rem;
+      }
+    }
+
+    .site-footer{
+      border-top:1px solid rgba(31,41,55,0.9);
+      background:#020617;
+      margin-top:auto;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:18px 20px 20px;
+      font-size:.8rem;
+      color:var(--muted);
+    }
+
+    .back-to-top{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:.8rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .back-to-top:hover{
+      color:var(--accent);
+    }
+
+    @media (max-width: 640px){
+      .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+  <header class="topbar" id="top">
+    <div class="container topbar-inner">
+      <a href="index.html#home" class="brand">
+        <div class="brand-logo">
+          <img src="images/logo.png" alt="Perunding Ihsan Sdn Bhd" class="logo">
+        </div>
+        <div class="brand-text-wrap">
+          <span class="brand-name">Perunding Ihsan</span>
+          <span class="brand-tagline">Project Management &amp; Consulting Engineers</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html#home">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html" class="nav-active">Our Service</a>
+        <a href="our-work.html">Our Work</a>
+        <a href="expertise.html">Expertise</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- SERVICES HERO -->
+    <section class="subpage-hero">
+      <div class="container subpage-hero-inner">
+        <div>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span>Consulting &amp; project services</span>
+          </div>
+          <h1>
+            End-to-end engineering services from feasibility studies to construction supervision.
+          </h1>
+          <p class="lead">
+            Perunding Ihsan provides a full range of civil, structural, highway, infrastructure and marine
+            engineering services to support public and private sector projects throughout Malaysia.
+          </p>
+          <p>
+            Whether the project is a new expressway, bridge, industrial facility or coastal protection work,
+            our team can assist from early planning through detailed design, tender, contract administration
+            and site supervision.
+          </p>
+          <a href="index.html#contact" class="btn btn-primary" style="margin-top:10px;">Request a proposal</a>
+        </div>
+
+        <aside class="hero-media-card">
+          <!-- you can replace this with any stock / project image -->
+          <div class="hero-media-img"></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CORE SERVICES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Core consulting services</div>
+          <h2>Services designed to support every stage of an infrastructure project.</h2>
+          <p>
+            The scope of work can be tailored to a full design-and-supervise appointment or individual tasks such as
+            feasibility study, detail design, independent checking or construction supervision.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="service-card">
+            <div class="service-tag">01 · Project management</div>
+            <div class="service-title">Project management &amp; coordination</div>
+            <ul class="service-points">
+              <li>Overall planning, scheduling and progress monitoring.</li>
+              <li>Coordination between client, authorities, consultants and contractor.</li>
+              <li>Regular technical and progress reporting.</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-tag">02 · Studies</div>
+            <div class="service-title">Feasibility &amp; engineering studies</div>
+            <ul class="service-points">
+              <li>Technical and site assessment for proposed routes and locations.</li>
+              <li>Traffic, capacity and safety studies for roads and interchanges.</li>
+              <li>Preliminary cost estimates and implementation strategies.</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-tag">03 · Design</div>
+            <div class="service-title">Preliminary &amp; detailed design</div>
+            <ul class="service-points">
+              <li>Geometric design of highways, interchanges and access roads.</li>
+              <li>Structural design of bridges, retaining walls and buildings.</li>
+              <li>Earthworks, drainage, water supply and utilities design.</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-tag">04 · Documentation</div>
+            <div class="service-title">Tender documentation &amp; contract admin</div>
+            <ul class="service-points">
+              <li>Preparation of drawings, BOQ, specifications and tender documents.</li>
+              <li>Assistance during tender calling, evaluation and recommendation.</li>
+              <li>Contract administration, variation evaluation and technical advice.</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-tag">05 · Site services</div>
+            <div class="service-title">Construction supervision &amp; site inspection</div>
+            <ul class="service-points">
+              <li>Resident engineer / clerk of works on site as required.</li>
+              <li>Monitoring of workmanship, materials and compliance with drawings.</li>
+              <li>Site meetings, inspections and completion / handover support.</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-tag">06 · Building audit</div>
+            <div class="service-title">Building condition &amp; structural assessment</div>
+            <ul class="service-points">
+              <li>Visual inspection and structural review of existing buildings.</li>
+              <li>Identification of defects and proposed remedial solutions.</li>
+              <li>Technical reports for owners, insurers or authorities.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTOR-SPECIFIC SERVICES -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Sector-specific solutions</div>
+          <h2>Specialised services across highways, structures, infrastructure and marine works.</h2>
+          <p>
+            In addition to general civil and structural design, Perunding Ihsan offers focused expertise in the
+            following sectors.
+          </p>
+        </div>
+
+        <div class="table-scroll">
+          <table class="cap-table">
+            <thead>
+              <tr>
+                <th style="width:160px;">Sector</th>
+                <th style="width:260px;">Typical projects</th>
+                <th>Key services</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Highways &amp; transportation</td>
+                <td>Expressways, interchanges, urban roads, access roads, traffic improvement schemes.</td>
+                <td>
+                  Route selection, traffic analysis, geometric &amp; pavement design, drainage, safety audits,
+                  staging and supervision.
+                </td>
+              </tr>
+              <tr>
+                <td>Structural &amp; building works</td>
+                <td>Bridges, flyovers, retaining structures, commercial &amp; industrial buildings.</td>
+                <td>
+                  Structural analysis, foundation and superstructure design, detailing review, strengthening
+                  recommendations and site support.
+                </td>
+              </tr>
+              <tr>
+                <td>Infrastructure &amp; utilities</td>
+                <td>Platform earthworks, drainage networks, water supply, sewerage and utility corridors.</td>
+                <td>
+                  Earthworks and platform design, stormwater management, water and sewer networks, coordination of
+                  utility diversions and protection.
+                </td>
+              </tr>
+              <tr>
+                <td>Marine &amp; coastal engineering</td>
+                <td>Revetments, seawalls, jetties, coastal access roads and protection works.</td>
+                <td>
+                  Concept and detailed design, coastal protection structures, associated road and drainage systems,
+                  plus supervision during construction.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-strip">
+      <div class="container cta-inner">
+        <div>
+          <div class="cta-title">Need help defining the right scope of services?</div>
+          <div class="cta-sub">
+            Share your proposed project, and the team at Perunding Ihsan can recommend a combination of studies,
+            designs and site services that fits your programme and budget.
+          </div>
+        </div>
+        <a href="contact.html" class="btn btn-primary">Talk to our team</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Perunding Ihsan Sdn Bhd. All rights reserved.</p>
+      <a href="#top" class="back-to-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+
+    if (navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        nav.classList.toggle('nav-open');
+      });
+
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('nav-open');
+        });
+      });
+    }
+
+    // Current year in footer
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+  </script>
+</body>
+</html>

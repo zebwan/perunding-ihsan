@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About – Perunding Ihsan Sdn Bhd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#05060b;
+      --bg-soft:#0b1020;
+      --surface:#0b1020;
+      --surface-soft:#151826;
+      --accent:#f59e0b;
+      --accent-soft:rgba(245,158,11,0.14);
+      --text:#f9fafb;
+      --muted:#9ca3af;
+      --border:#1f2937;
+      --radius-lg:18px;
+      --radius-xl:24px;
+      --shadow-soft:0 22px 55px rgba(0,0,0,0.6);
+    }
+
+    *,
+    *::before,
+    *::after{
+      box-sizing:border-box;
+    }
+
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:"Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:radial-gradient(circle at top left,#111827,#020617);
+      color:var(--text);
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:100%;
+      max-width:1180px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* ========== TOPBAR / NAVIGATION ========== */
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:40;
+      background:rgba(5,6,11,0.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(15,23,42,0.9);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 0 10px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--text);
+    }
+
+    .brand-logo{
+      border-radius:12px;
+      background:#ffffff;
+      padding:4px 6px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.35);
+    }
+
+    .logo{
+      height:30px;
+      width:auto;
+      display:block;
+    }
+
+    .brand-text-wrap{
+      display:flex;
+      flex-direction:column;
+      line-height:1.2;
+    }
+
+    .brand-name{
+      font-weight:700;
+      font-size:.95rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .brand-tagline{
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+
+    .nav a,
+    .nav-dropdown-trigger{
+      font-size:.8rem;
+      font-weight:500;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+      text-decoration:none;
+      background:none;
+      border:none;
+      padding:4px 0;
+      cursor:pointer;
+    }
+
+    .nav a:hover,
+    .nav-dropdown-trigger:hover{
+      color:var(--text);
+    }
+
+    .nav a.nav-active{
+      color:var(--accent);
+    }
+
+    .nav-dropdown{
+      position:relative;
+    }
+
+    .nav-dropdown-trigger{
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .nav-dropdown-trigger::after{
+      content:"▾";
+      font-size:.7rem;
+      transform:translateY(-1px);
+    }
+
+    .nav-dropdown-menu{
+      position:absolute;
+      right:0;
+      top:130%;
+      background:var(--surface-soft);
+      border-radius:14px;
+      padding:6px 0;
+      min-width:230px;
+      box-shadow:var(--shadow-soft);
+      border:1px solid var(--border);
+      display:none;
+      z-index:30;
+    }
+
+    .nav-dropdown-menu a{
+      display:block;
+      padding:8px 14px;
+      font-size:.78rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      text-decoration:none;
+    }
+
+    .nav-dropdown-menu a:hover{
+      background:#020617;
+      color:var(--text);
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu{
+      display:block;
+    }
+
+    /* Mobile nav toggle */
+
+    .nav-toggle{
+      display:none;
+      flex-direction:column;
+      gap:4px;
+      background:none;
+      border:none;
+      padding:6px 0 6px 10px;
+      margin-left:10px;
+      cursor:pointer;
+    }
+
+    .nav-toggle span{
+      display:block;
+      width:20px;
+      height:2px;
+      border-radius:99px;
+      background:var(--text);
+    }
+
+    @media (max-width: 840px){
+      .nav{
+        position:fixed;
+        inset:56px 16px auto 16px;
+        flex-direction:column;
+        align-items:flex-start;
+        padding:16px 16px 14px;
+        background:rgba(15,23,42,0.98);
+        border-radius:18px;
+        border:1px solid rgba(31,41,55,0.9);
+        box-shadow:var(--shadow-soft);
+        max-height:0;
+        overflow:hidden;
+        opacity:0;
+        pointer-events:none;
+        transition:max-height .22s ease, opacity .16s ease;
+      }
+
+      .nav-open{
+        max-height:260px;
+        opacity:1;
+        pointer-events:auto;
+      }
+
+      .nav-dropdown{
+        width:100%;
+      }
+
+      .nav-dropdown-menu{
+        position:static;
+        border-radius:10px;
+        box-shadow:none;
+        border:none;
+        margin-top:6px;
+        background:#020617;
+      }
+
+      .nav-toggle{
+        display:flex;
+      }
+
+      .topbar-inner{
+        padding:10px 0 9px;
+      }
+    }
+
+    /* ========== GENERIC ELEMENTS ========== */
+
+    .section{
+      padding:80px 0;
+    }
+
+    .section-alt{
+      background:radial-gradient(circle at center, rgba(15,23,42,0.95), rgba(2,6,23,0.9));
+    }
+
+    .section-eyebrow{
+      text-transform:uppercase;
+      letter-spacing:.23em;
+      font-size:.75rem;
+      color:var(--accent);
+      margin-bottom:14px;
+      font-weight:600;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 10px;
+      line-height:1.15;
+    }
+
+    h1{
+      font-size:clamp(2.2rem, 3.1vw, 3rem);
+      letter-spacing:.02em;
+    }
+
+    h2{
+      font-size:clamp(1.5rem, 2.3vw, 2.1rem);
+    }
+
+    h3{
+      font-size:1rem;
+    }
+
+    p{
+      margin:0 0 10px;
+      font-size:1rem;
+      line-height:1.7;
+      color:var(--text);
+      text-align:justify;
+    }
+
+    .lead{
+      font-size:1.05rem;
+      max-width:640px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 20px;
+      border-radius:999px;
+      border:1px solid transparent;
+      text-decoration:none;
+      font-size:.85rem;
+      font-weight:600;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      cursor:pointer;
+      gap:8px;
+      white-space:nowrap;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#f97316,#fde047);
+      color:#111827;
+      box-shadow:0 18px 35px rgba(15,23,42,0.8);
+    }
+
+    .btn-primary:hover{
+      filter:brightness(1.05);
+    }
+
+    .btn-ghost{
+      background:transparent;
+      border-color:rgba(148,163,184,0.7);
+      color:var(--text);
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 12px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.6);
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+    }
+
+    .pill-dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:var(--accent);
+    }
+
+    /* ========== SUBPAGE HERO ========== */
+
+    .subpage-hero{
+      position:relative;
+      padding:90px 0 70px;
+      background:
+        radial-gradient(circle at top left, rgba(245,158,11,0.3), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(30,64,175,0.45), transparent 60%),
+        linear-gradient(to bottom,#020617,#020617);
+      overflow:hidden;
+    }
+
+    .subpage-hero::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background:url("images/projects.png") right center/cover no-repeat;
+      opacity:0.16;
+      mix-blend-mode:screen;
+      pointer-events:none;
+    }
+
+    .subpage-hero-inner{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+      gap:36px;
+      align-items:flex-start;
+    }
+
+    .subpage-title{
+      margin-bottom:14px;
+    }
+
+    .subpage-meta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .hero-facts-card{
+      background:rgba(15,23,42,0.96);
+      border-radius:var(--radius-xl);
+      padding:18px 18px 16px;
+      border:1px solid rgba(55,65,81,0.9);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .hero-facts-title{
+      font-size:.9rem;
+      font-weight:600;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+
+    .key-facts-table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:.9rem;
+    }
+
+    .key-facts-table th,
+    .key-facts-table td{
+      padding:6px 0;
+      border-bottom:1px solid rgba(31,41,55,0.9);
+    }
+
+    .key-facts-table th{
+      text-align:left;
+      font-weight:500;
+      color:var(--muted);
+      width:38%;
+      font-size:.78rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .key-facts-table td{
+      color:var(--text);
+      font-weight:500;
+      font-size:.9rem;
+    }
+
+    .hero-tag-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+      gap:8px;
+      margin-top:8px;
+    }
+
+    .hero-tag{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(99,102,241,0.6);
+      font-size:.78rem;
+      color:var(--muted);
+      background:rgba(15,23,42,0.9);
+      white-space:nowrap;
+    }
+
+    @media (max-width: 880px){
+      .subpage-hero-inner{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 640px){
+      .subpage-hero{
+        padding:78px 0 56px;
+      }
+
+      h1{
+        font-size:2rem;
+      }
+
+      .lead{
+        font-size:.98rem;
+      }
+    }
+
+    /* ========== ABOUT SECTIONS ========== */
+
+    .about-layout{
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+      gap:40px;
+      align-items:flex-start;
+    }
+
+    .about-block{
+      background:rgba(15,23,42,0.97);
+      border-radius:var(--radius-xl);
+      padding:22px 22px 20px;
+      border:1px solid rgba(31,41,55,0.9);
+      box-shadow:0 18px 45px rgba(0,0,0,0.7);
+    }
+
+    .about-block h3{
+      font-size:.95rem;
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+
+    .about-block p{
+      font-size:.95rem;
+    }
+
+    .about-stats-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .about-stat-card{
+      background:linear-gradient(135deg, rgba(248,250,252,0.03), rgba(15,23,42,0.95));
+      border-radius:16px;
+      padding:10px 12px 9px;
+      border:1px solid rgba(55,65,81,0.85);
+    }
+
+    .about-stat-number{
+      display:block;
+      font-weight:700;
+      font-size:1.05rem;
+      margin-bottom:2px;
+    }
+
+    .about-stat-label{
+      font-size:.78rem;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    /* ========== ORG STRUCTURE (NEW) ========== */
+
+    .org-section{
+      background:#020617;
+      padding-top:60px;
+      padding-bottom:40px;
+    }
+
+    .org-wrapper{
+      background:rgba(15,23,42,0.97);
+      border-radius:var(--radius-xl);
+      padding:22px 22px 20px;
+      border:1px solid rgba(31,41,55,0.9);
+      box-shadow:0 18px 45px rgba(0,0,0,0.7);
+    }
+
+    .org-matrix-top{
+      text-align:center;
+      margin-bottom:20px;
+    }
+
+    .org-pill-title{
+      font-size:.75rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+
+    .org-principal{
+      display:inline-flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:10px 18px 12px;
+      border-radius:18px;
+      background:linear-gradient(135deg, rgba(59,130,246,0.18), rgba(56,189,248,0.22));
+      border:1px solid rgba(129,140,248,0.9);
+      min-width:240px;
+    }
+
+    .org-role{
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+    }
+
+    .org-name{
+      font-size:.98rem;
+      font-weight:600;
+      margin-top:4px;
+      text-align:center;
+    }
+
+    .org-meta{
+      font-size:.8rem;
+      color:var(--muted);
+      margin-top:4px;
+      text-align:center;
+    }
+
+    .org-row{
+      margin-top:6px;
+    }
+
+    .org-row-label{
+      font-size:.75rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+      margin:4px 0 10px;
+    }
+
+    .org-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:10px;
+    }
+
+    .org-card{
+      background:rgba(15,23,42,0.9);
+      border-radius:14px;
+      padding:10px 12px 9px;
+      border:1px solid rgba(55,65,81,0.9);
+    }
+
+    .org-card .org-name{
+      text-align:left;
+    }
+
+    .org-card .org-meta{
+      text-align:left;
+    }
+
+    @media (max-width: 1024px){
+      .org-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 768px){
+      .org-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .org-principal{
+        width:100%;
+      }
+    }
+
+    @media (max-width: 540px){
+      .org-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 900px){
+      .about-layout{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .section-header{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      margin-bottom:26px;
+      max-width:680px;
+    }
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .info-card{
+      background:rgba(15,23,42,0.97);
+      border-radius:var(--radius-lg);
+      padding:18px 18px 16px;
+      border:1px solid rgba(55,65,81,0.95);
+    }
+
+    .info-card h3{
+      font-size:.9rem;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+
+    .info-card p{
+      font-size:.9rem;
+    }
+
+    @media (max-width: 900px){
+      .card-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 640px){
+      .card-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    /* Team section */
+
+    .team-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .team-card{
+      background:rgba(15,23,42,0.97);
+      border-radius:var(--radius-lg);
+      padding:18px 18px 15px;
+      border:1px solid rgba(55,65,81,0.9);
+    }
+
+    .team-role{
+      font-size:.75rem;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+
+    .team-name{
+      font-weight:600;
+      font-size:.98rem;
+      margin-bottom:4px;
+    }
+
+    .team-focus{
+      font-size:.9rem;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+
+    .team-meta{
+      font-size:.78rem;
+      color:var(--muted);
+    }
+
+    @media (max-width: 900px){
+      .team-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 640px){
+      .team-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    /* Capabilities table */
+
+    .table-scroll{
+      width:100%;
+      overflow-x:auto;
+      padding-bottom:4px;
+    }
+
+    .cap-table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:560px;
+      font-size:.9rem;
+    }
+
+    .cap-table thead{
+      background:rgba(15,23,42,0.98);
+    }
+
+    .cap-table th,
+    .cap-table td{
+      padding:10px 12px;
+      border-bottom:1px solid rgba(31,41,55,0.9);
+      vertical-align:top;
+    }
+
+    .cap-table th{
+      text-align:left;
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .cap-table td{
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    .cap-table tbody tr:nth-child(even){
+      background:rgba(15,23,42,0.8);
+    }
+
+    /* CTA strip */
+
+    .cta-strip{
+      padding:40px 0 50px;
+      border-top:1px solid rgba(15,23,42,0.9);
+      background:#020617;
+    }
+
+    .cta-inner{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .cta-title{
+      font-size:1.1rem;
+      font-weight:600;
+    }
+
+    .cta-sub{
+      font-size:.95rem;
+      color:var(--muted);
+    }
+
+    @media (max-width: 640px){
+      .cta-title{
+        font-size:1rem;
+      }
+    }
+
+    /* Footer */
+
+    .site-footer{
+      border-top:1px solid rgba(31,41,55,0.9);
+      background:#020617;
+      margin-top:auto;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:18px 20px 20px;
+      font-size:.8rem;
+      color:var(--muted);
+    }
+
+    .back-to-top{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:.8rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .back-to-top:hover{
+      color:var(--accent);
+    }
+
+    @media (max-width: 640px){
+      .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+  <header class="topbar" id="top">
+    <div class="container topbar-inner">
+      <a href="index.html#home" class="brand">
+        <div class="brand-logo">
+          <img src="images/logo.png" alt="Perunding Ihsan Sdn Bhd" class="logo">
+        </div>
+        <div class="brand-text-wrap">
+          <span class="brand-name">Perunding Ihsan</span>
+          <span class="brand-tagline">Project Management &amp; Consulting Engineers</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html#home">Home</a>
+        <a href="about.html" class="nav-active">About Us</a>
+        <a href="service.html">Our Service</a>
+        <a href="our-work.html">Our Work</a>
+        <a href="expertise.html">Expertise</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ABOUT HERO -->
+    <section class="subpage-hero">
+      <div class="container subpage-hero-inner">
+        <div>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span>About Perunding Ihsan</span>
+          </div>
+          <h1 class="subpage-title">
+            Engineering partners building safe, reliable infrastructure across Malaysia.
+          </h1>
+          <p class="lead">
+            Perunding Ihsan Sdn Bhd is a 100% Bumiputera consulting practice specialising in civil, structural,
+            transportation, infrastructure and marine engineering for government agencies, developers and industry.
+          </p>
+
+          <div class="subpage-meta-row">
+            <div class="hero-tag">Project management &amp; supervision</div>
+            <div class="hero-tag">Highway &amp; transportation design</div>
+            <div class="hero-tag">Structural &amp; building works</div>
+            <div class="hero-tag">Infrastructure &amp; utilities</div>
+            <div class="hero-tag">Coastal &amp; marine projects</div>
+          </div>
+        </div>
+
+        <aside class="hero-facts-card">
+          <p class="hero-facts-title">Company at a glance</p>
+          <table class="key-facts-table">
+            <tbody>
+              <tr>
+                <th>Ownership</th>
+                <td>100% Bumiputera consulting engineers</td>
+              </tr>
+              <tr>
+                <th>Core disciplines</th>
+                <td>Civil, structural, highway, transportation, infrastructure &amp; marine</td>
+              </tr>
+              <tr>
+                <th>Services</th>
+                <td>Studies, detailed design, contract administration, supervision &amp; project management</td>
+              </tr>
+              <tr>
+                <th>Coverage</th>
+                <td>Nationwide projects for public &amp; private sector clients</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="about-stats-grid" style="margin-top:12px">
+            <div class="about-stat-card">
+              <span class="about-stat-number">20+ years</span>
+              <span class="about-stat-label">Combined leadership experience</span>
+            </div>
+            <div class="about-stat-card">
+              <span class="about-stat-number">100+ projects</span>
+              <span class="about-stat-label">Completed across key sectors</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ORG STRUCTURE SUMMARY (NEW) -->
+    <section class="section org-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Organisation structure</div>
+          <h2>Specialist team aligned around key civil &amp; structural disciplines.</h2>
+          <p>
+            The firm is led by Principal Ir. Mohd Azmi Mohd Ali with Associate Director Ahmad Zulkarnain supporting day-to-day
+            management. Dedicated leads oversee infrastructure, geotechnical and structural design, contracts administration and
+            accounts, while technical assistants and a draughting team support design production and site delivery.
+          </p>
+        </div>
+
+        <div class="org-wrapper">
+          <div class="org-matrix-top">
+            <div class="org-pill-title">Overall leadership</div>
+            <div class="org-principal">
+              <div class="org-role">Principal</div>
+              <div class="org-name">Ir. Mohd Azmi Mohd Ali</div>
+              <div class="org-meta">Chartered civil engineer &amp; project director</div>
+            </div>
+          </div>
+
+          <div class="org-row">
+            <div class="org-row-label">Management &amp; discipline leads</div>
+            <div class="org-grid">
+              <div class="org-card">
+                <div class="org-role">Associate Director</div>
+                <div class="org-name">Ahmad Zulkarnain</div>
+                <div class="org-meta">Civil &amp; structural coordination, project oversight</div>
+              </div>
+              <div class="org-card">
+                <div class="org-role">Infrastructure</div>
+                <div class="org-name">Ir. Mohd Nasir Jon</div>
+                <div class="org-meta">Roads, drainage &amp; infrastructure works</div>
+              </div>
+              <div class="org-card">
+                <div class="org-role">Geotech / Structure</div>
+                <div class="org-name">Ir. Suhaimi Shamsudin</div>
+                <div class="org-meta">Geotechnical &amp; structural engineering</div>
+              </div>
+              <div class="org-card">
+                <div class="org-role">Contracts / Admin</div>
+                <div class="org-name">Sharil Abd Rahman</div>
+                <div class="org-meta">Contracts administration &amp; project documentation</div>
+              </div>
+              <div class="org-card">
+                <div class="org-role">Admin / Accounts</div>
+                <div class="org-name">Norizah Osman</div>
+                <div class="org-meta">Accounts, billing &amp; office administration</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="org-row" style="margin-top:18px;">
+            <div class="org-row-label">Technical &amp; draughting support</div>
+            <div class="org-grid">
+              <div class="org-card">
+                <div class="org-role">Technical Assistant</div>
+                <div class="org-name">Mohd Nawaz Koya</div>
+                <div class="org-meta">Design support &amp; coordination</div>
+              </div>
+              <div class="org-card">
+                <div class="org-role">Technical Assistant</div>
+                <div class="org-name">Ku Suriyani Ku Yaacob</div>
+                <div class="org-meta">Technical documentation &amp; site support</div>
+              </div>
+              <div class="org-card">
+                <div class="org-role">Senior Draughtsman</div>
+                <div class="org-name">Suraini Muhamad</div>
+                <div class="org-meta">Leads CAD production &amp; drawing management</div>
+              </div>
+              <div class="org-card">
+                <div class="org-role">Draughtsman</div>
+                <div class="org-name">Mohd Khairul Haizan</div>
+              </div>
+              <div class="org-card">
+                <div class="org-role">Draughtsman</div>
+                <div class="org-name">Nor Azura Azizi Othman</div>
+              </div>
+              <div class="org-card">
+                <div class="org-role">Draughtsman</div>
+                <div class="org-name">Nor Zahara Bt Had</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPANY OVERVIEW -->
+    <section class="section">
+      <div class="container about-layout">
+        <div>
+          <div class="section-eyebrow">Company overview</div>
+          <h2>Grounded in engineering rigour, focused on real-world project delivery.</h2>
+          <p>
+            Perunding Ihsan provides end-to-end consulting services covering feasibility studies, preliminary and
+            detailed design, tender documentation, contract administration and site supervision.
+          </p>
+          <p>
+            The practice has been involved in highways, interchanges, bridges, buildings, industrial plants,
+            townships, drainage systems, water supply and coastal protection works across Malaysia.
+          </p>
+
+          <div class="about-block" style="margin-top:18px">
+            <h3>What clients can expect</h3>
+            <p>
+              • Clear, practical recommendations backed by analysis<br>
+              • Designs that consider safety, constructability and lifecycle cost<br>
+              • Close coordination with authorities, contractors and stakeholders<br>
+              • Active project management from concept through completion
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="about-block">
+            <h3>Key practice information</h3>
+            <table class="key-facts-table">
+              <tbody>
+                <tr>
+                  <th>Company name</th>
+                  <td>Perunding Ihsan Sdn Bhd</td>
+                </tr>
+                <tr>
+                  <th>Nature of business</th>
+                  <td>Project management &amp; multi-discipline consulting engineers</td>
+                </tr>
+                <tr>
+                  <th>Main clients</th>
+                  <td>Government agencies, local authorities, developers &amp; private industry</td>
+                </tr>
+                <tr>
+                  <th>Project types</th>
+                  <td>Highways, interchanges, buildings, infrastructure, industrial &amp; marine works</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW WE WORK / VALUES -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">How we work</div>
+          <h2>Engineering practice built on quality, safety and collaboration.</h2>
+          <p>
+            The firm combines strong technical capabilities with hands-on project management to keep programmes,
+            budgets and design quality on track.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="info-card">
+            <h3>Technical excellence</h3>
+            <p>
+              Designs are prepared in accordance with relevant Malaysian and international standards, supported by
+              in-house analysis tools for highways, structures, drainage and infrastructure.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Safety &amp; constructability</h3>
+            <p>
+              Solutions take into account site conditions, construction staging, traffic management and long-term
+              operations to ensure projects can be built and maintained safely.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Client-focused delivery</h3>
+            <p>
+              Project teams maintain clear communication with clients, consultants and contractors, providing timely
+              updates and documentation for every project stage.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM / LEADERSHIP -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Leadership &amp; team</div>
+          <h2>A multidisciplinary team of chartered engineers and experienced professionals.</h2>
+          <p>
+            The practice is led by senior engineers with experience in highways, structures, industrial and
+            infrastructure works, supported by qualified technical and project management staff.
+          </p>
+        </div>
+
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-role">Principal Director</div>
+            <div class="team-name">Chartered Civil Engineer</div>
+            <div class="team-focus">
+              Overall project director responsible for design direction, quality assurance and client engagement.
+            </div>
+            <div class="team-meta">Leads multidisciplinary teams for major highway, bridge and infrastructure projects.</div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-role">Associate – Highways &amp; Traffic</div>
+            <div class="team-name">Senior Highway Engineer</div>
+            <div class="team-focus">
+              Specialises in road alignment, interchanges, traffic studies, pavement design and construction staging.
+            </div>
+            <div class="team-meta">Experienced with expressways, urban arterials and access roads.</div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-role">Associate – Structures &amp; Buildings</div>
+            <div class="team-name">Structural Engineer</div>
+            <div class="team-focus">
+              Designs bridges, retaining structures and building frames in reinforced concrete and steel.
+            </div>
+            <div class="team-meta">Supports design checks, value engineering and site technical queries.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES SNAPSHOT TABLE -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Capabilities snapshot</div>
+          <h2>Where Perunding Ihsan adds value across the project lifecycle.</h2>
+          <p>
+            From early-stage studies through to commissioning, the firm provides integrated engineering and
+            management support.
+          </p>
+        </div>
+
+        <div class="table-scroll">
+          <table class="cap-table">
+            <thead>
+              <tr>
+                <th style="width:160px">Sector</th>
+                <th style="width:240px">Typical facilities</th>
+                <th>Key services provided</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Highways &amp; transportation</td>
+                <td>Expressways, interchanges, urban roads, traffic improvements</td>
+                <td>
+                  Traffic studies, geometric design, pavement design, drainage, safety audits, construction staging
+                  and supervision.
+                </td>
+              </tr>
+              <tr>
+                <td>Structures &amp; buildings</td>
+                <td>Bridges, flyovers, retaining walls, commercial &amp; industrial buildings</td>
+                <td>
+                  Structural analysis and design, foundation design, value engineering, detailing review and site
+                  technical support.
+                </td>
+              </tr>
+              <tr>
+                <td>Infrastructure &amp; utilities</td>
+                <td>Earthworks, drainage, water supply, sewerage, utility corridors</td>
+                <td>
+                  Master planning, hydraulic analysis, platform design, drainage systems, utility coordination and
+                  contract administration.
+                </td>
+              </tr>
+              <tr>
+                <td>Marine &amp; coastal</td>
+                <td>Revetments, seawalls, jetties, coastal protection &amp; access roads</td>
+                <td>
+                  Concept and detailed design, coastal protection works, associated road and drainage, and site
+                  supervision.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-strip">
+      <div class="container cta-inner">
+        <div>
+          <div class="cta-title">Have a new highway, infrastructure or marine project in mind?</div>
+          <div class="cta-sub">
+            Share your project brief and our team will recommend a suitable scope of engineering services.
+          </div>
+        </div>
+        <a href="contact.html" class="btn btn-primary">Talk to our team</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Perunding Ihsan Sdn Bhd. All rights reserved.</p>
+      <a href="#top" class="back-to-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+
+    if (navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        nav.classList.toggle('nav-open');
+      });
+
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('nav-open');
+        });
+      });
+    }
+
+    // Current year in footer
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+  </script>
+</body>
+</html>

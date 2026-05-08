@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Our Work – Perunding Ihsan Sdn Bhd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#05060b;
+      --bg-soft:#0b1020;
+      --surface:#0b1020;
+      --surface-soft:#151826;
+      --accent:#f59e0b;
+      --accent-soft:rgba(245,158,11,0.14);
+      --text:#f9fafb;
+      --muted:#9ca3af;
+      --border:#1f2937;
+      --radius-lg:18px;
+      --radius-xl:24px;
+      --shadow-soft:0 22px 55px rgba(0,0,0,0.6);
+    }
+
+    *,
+    *::before,
+    *::after{
+      box-sizing:border-box;
+    }
+
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:"Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:radial-gradient(circle at top left,#111827,#020617);
+      color:var(--text);
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:100%;
+      max-width:1180px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* ========== TOPBAR / NAVIGATION ========== */
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:40;
+      background:rgba(5,6,11,0.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(15,23,42,0.9);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 0 10px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--text);
+    }
+
+    .brand-logo{
+      border-radius:12px;
+      background:#ffffff;
+      padding:4px 6px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .logo{
+      height:30px;
+      width:auto;
+      display:block;
+    }
+
+    .brand-text-wrap{
+      display:flex;
+      flex-direction:column;
+      line-height:1.2;
+    }
+
+    .brand-name{
+      font-weight:700;
+      font-size:.95rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .brand-tagline{
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+
+    .nav a{
+      font-size:.8rem;
+      font-weight:500;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+      text-decoration:none;
+      padding:4px 0;
+    }
+
+    .nav a:hover{
+      color:var(--text);
+    }
+
+    .nav a.nav-active{
+      color:var(--accent);
+    }
+
+    .nav-toggle{
+      display:none;
+      flex-direction:column;
+      gap:4px;
+      background:none;
+      border:none;
+      padding:6px 0 6px 10px;
+      margin-left:10px;
+      cursor:pointer;
+    }
+
+    .nav-toggle span{
+      display:block;
+      width:20px;
+      height:2px;
+      border-radius:99px;
+      background:var(--text);
+    }
+
+    @media (max-width: 840px){
+      .nav{
+        position:fixed;
+        inset:56px 16px auto 16px;
+        flex-direction:column;
+        align-items:flex-start;
+        padding:16px 16px 14px;
+        background:rgba(15,23,42,0.98);
+        border-radius:18px;
+        border:1px solid rgba(31,41,55,0.9);
+        box-shadow:var(--shadow-soft);
+        max-height:0;
+        overflow:hidden;
+        opacity:0;
+        pointer-events:none;
+        transition:max-height .22s ease, opacity .16s ease;
+      }
+
+      .nav-open{
+        max-height:260px;
+        opacity:1;
+        pointer-events:auto;
+      }
+
+      .nav-toggle{
+        display:flex;
+      }
+
+      .topbar-inner{
+        padding:10px 0 9px;
+      }
+    }
+
+    /* ========== GENERIC ELEMENTS ========== */
+
+    .section{
+      padding:80px 0;
+    }
+
+    .section-alt{
+      background:radial-gradient(circle at center, rgba(15,23,42,0.95), rgba(2,6,23,0.9));
+    }
+
+    .section-eyebrow{
+      text-transform:uppercase;
+      letter-spacing:.23em;
+      font-size:.75rem;
+      color:var(--accent);
+      margin-bottom:14px;
+      font-weight:600;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 10px;
+      line-height:1.15;
+    }
+
+    h1{
+      font-size:clamp(2.2rem, 3.1vw, 3rem);
+      letter-spacing:.02em;
+    }
+
+    h2{
+      font-size:clamp(1.5rem, 2.3vw, 2.1rem);
+    }
+
+    h3{
+      font-size:1rem;
+    }
+
+    p{
+      margin:0 0 10px;
+      font-size:1rem;
+      line-height:1.7;
+      color:var(--text);
+      text-align:justify;
+    }
+
+    .lead{
+      font-size:1.05rem;
+      max-width:640px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 12px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.7);
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+    }
+
+    .pill-dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:var(--accent);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 20px;
+      border-radius:999px;
+      border:1px solid transparent;
+      text-decoration:none;
+      font-size:.85rem;
+      font-weight:600;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      cursor:pointer;
+      gap:8px;
+      white-space:nowrap;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#f97316,#fde047);
+      color:#111827;
+      box-shadow:0 18px 35px rgba(15,23,42,0.8);
+    }
+
+    .btn-primary:hover{
+      filter:brightness(1.05);
+    }
+
+    /* ========== HERO ========== */
+
+    .subpage-hero{
+      position:relative;
+      padding:90px 0 70px;
+      background:
+        radial-gradient(circle at top left, rgba(245,158,11,0.32), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(30,64,175,0.45), transparent 60%),
+        linear-gradient(to bottom,#020617,#020617);
+      overflow:hidden;
+    }
+
+    .subpage-hero::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background:url("images/projects.png") right center/cover no-repeat;
+      opacity:0.18;
+      mix-blend-mode:screen;
+      pointer-events:none;
+    }
+
+    .subpage-hero-inner{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+      gap:36px;
+      align-items:flex-start;
+    }
+
+    .hero-summary-card{
+      background:rgba(15,23,42,0.96);
+      border-radius:var(--radius-xl);
+      padding:18px 20px 16px;
+      border:1px solid rgba(55,65,81,0.9);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .hero-summary-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:8px;
+    }
+
+    .hero-stat{
+      flex:0 0 auto;
+    }
+
+    .hero-stat-label{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+    }
+
+    .hero-stat-value{
+      font-weight:600;
+      font-size:1.1rem;
+    }
+
+    @media (max-width: 880px){
+      .subpage-hero-inner{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 640px){
+      .subpage-hero{
+        padding:78px 0 56px;
+      }
+
+      h1{
+        font-size:2rem;
+      }
+
+      .lead{
+        font-size:.98rem;
+      }
+    }
+
+    /* ========== STACKED PROJECT CARDS ========== */
+
+
+.stack-section{
+  background:#020617;
+  padding:60px 0 80px;          /* sedikit kurang ruang atas */
+}
+
+.stack-header{
+  max-width:780px;
+  margin:0 auto 20px;
+  position:sticky;
+  top:88px;
+  z-index:3;
+  padding-bottom:14px;
+  background:linear-gradient(
+    to bottom,
+    #020617 0%,
+    rgba(2,6,23,0.98) 55%,
+    transparent 100%
+  );
+}
+
+    .stack-progress{
+      margin-top:18px;
+      font-size:.82rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .stack-bar{
+      flex:1;
+      height:4px;
+      border-radius:999px;
+      background:#111827;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .stack-bar-fill{
+      position:absolute;
+      inset:0;
+      width:0%;
+      border-radius:999px;
+      background:linear-gradient(90deg,#f97316,#fde047);
+      transition:width .25s ease-out;
+    }
+
+  .stack-cards-column{
+  max-width:900px;
+  margin:0 auto;
+  position:relative;
+  margin-top:0;             /* pull cards closer to header */
+}
+    @media (max-width: 720px){
+  .stack-header{
+    position:static;
+    top:auto;
+    background:none;
+  }
+}
+
+
+.project-card{
+  position:sticky;
+  top:150px; /* distance from top – adjust a bit if you want closer/ lower */
+  background:rgba(15,23,42,0.97);
+  border-radius:var(--radius-xl);
+  padding:22px 22px 18px;
+  border:1px solid rgba(55,65,81,0.95);
+  box-shadow:0 18px 45px rgba(0,0,0,0.65);
+  margin:0 auto 40px;
+  opacity:0;
+  transform:scale(.97);
+  backdrop-filter:blur(8px);
+  transition:
+    transform .25s ease,
+    opacity .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
+
+.project-card[data-active="true"]{
+  opacity:1;
+  transform:scale(1);
+  box-shadow:0 26px 65px rgba(0,0,0,0.85);
+  border-color:rgba(248,250,252,0.18);
+}
+
+    .project-tag-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+      margin-bottom:8px;
+    }
+
+    .project-pill{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+    }
+
+    .project-count{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .project-count strong{
+      color:var(--text);
+    }
+
+    .project-title{
+      font-size:1.15rem;
+      font-weight:600;
+      margin-bottom:6px;
+    }
+
+    .project-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 18px;
+      font-size:.82rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+
+    .project-meta span{
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .project-meta-label{
+      opacity:.7;
+    }
+
+    .project-body{
+      font-size:.98rem;
+      margin-top:4px;
+    }
+
+    .project-body ul{
+      list-style:none;
+      padding:0;
+      margin:8px 0 0;
+      font-size:.95rem;
+    }
+
+    .project-body li{
+      position:relative;
+      padding-left:14px;
+      margin-bottom:4px;
+      text-align:justify;
+    }
+
+    .project-body li::before{
+      content:"•";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--accent);
+      font-size:.9rem;
+    }
+
+    @media (max-width: 640px){
+      .project-card{
+        padding:18px 16px 16px;
+        margin-bottom:32px;
+      }
+
+      .project-title{
+        font-size:1.05rem;
+      }
+    }
+
+    /* ========== CTA & FOOTER ========== */
+
+    .cta-strip{
+      padding:40px 0 50px;
+      border-top:1px solid rgba(15,23,42,0.9);
+      background:#020617;
+    }
+
+    .cta-inner{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .cta-title{
+      font-size:1.1rem;
+      font-weight:600;
+    }
+
+    .cta-sub{
+      font-size:.95rem;
+      color:var(--text);
+      text-align:justify;
+    }
+
+    @media (max-width: 640px){
+      .cta-title{
+        font-size:1rem;
+      }
+    }
+
+    .site-footer{
+      border-top:1px solid rgba(31,41,55,0.9);
+      background:#020617;
+      margin-top:auto;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:18px 20px 20px;
+      font-size:.8rem;
+      color:var(--muted);
+    }
+
+    .back-to-top{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:.8rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .back-to-top:hover{
+      color:var(--accent);
+    }
+
+    @media (max-width: 640px){
+      .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+  <header class="topbar" id="top">
+    <div class="container topbar-inner">
+      <a href="index.html#home" class="brand">
+        <div class="brand-logo">
+          <img src="images/logo.png" alt="Perunding Ihsan Sdn Bhd" class="logo">
+        </div>
+        <div class="brand-text-wrap">
+          <span class="brand-name">Perunding Ihsan</span>
+          <span class="brand-tagline">Project Management &amp; Consulting Engineers</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html#home">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="service.html">Our Service</a>
+        <a href="our-work.html" class="nav-active">Our Work</a>
+        <a href="expertise.html">Expertise</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="subpage-hero">
+      <div class="container subpage-hero-inner">
+        <div>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span>Selected projects</span>
+          </div>
+          <h1>Real projects that connect communities, industries and coastlines.</h1>
+          <p class="lead">
+            From highways and interchanges to drainage, townships and coastal protection works,
+            Perunding Ihsan has been involved in a wide range of infrastructure projects across Malaysia.
+          </p>
+          <p>
+            The examples below cover different roles such as feasibility study, detailed design,
+            contract administration and site supervision for both public and private sector clients.
+          </p>
+        </div>
+
+        <aside class="hero-summary-card">
+          <p style="text-transform:uppercase; letter-spacing:.18em; font-size:.8rem; color:var(--muted); margin-bottom:6px;">
+            Snapshot of experience
+          </p>
+          <div class="hero-summary-row">
+            <div class="hero-stat">
+              <div class="hero-stat-label">Projects undertaken</div>
+              <div class="hero-stat-value">38+</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-label">Key sectors</div>
+              <div class="hero-stat-value">Highway, structural, infrastructure &amp; marine</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-label">Roles</div>
+              <div class="hero-stat-value">Study, design, PM &amp; supervision</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- STACKED PROJECTS -->
+    <section class="section stack-section">
+      <div class="container">
+        <div class="stack-header">
+          <div class="section-eyebrow">Project portfolio</div>
+          <h2>Selected projects undertaken by Perunding Ihsan.</h2>
+          <p>
+            These highlights illustrate the variety of transport, structural, infrastructure and coastal projects
+            delivered for different clients and locations.
+          </p>
+
+          <div class="stack-progress">
+            <span id="stack-progress-label">Project 01</span>
+            <div class="stack-bar">
+              <div class="stack-bar-fill" id="stack-bar-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack-cards-column">
+          <!-- CARD 1 -->
+          <article class="project-card" data-active="true">
+            <div class="project-tag-row">
+              <div class="project-pill">Highways &amp; Transportation</div>
+              <div class="project-count"><strong class="card-index">01</strong> / <span class="card-total">08</span></div>
+            </div>
+            <h3 class="project-title">Upgrading of Federal Road &amp; Interchange Works</h3>
+            <div class="project-meta">
+              <span><span class="project-meta-label">Client</span> Government agency</span>
+              <span><span class="project-meta-label">Scope</span> Detailed design &amp; supervision</span>
+              <span><span class="project-meta-label">Location</span> Peninsular Malaysia</span>
+            </div>
+            <div class="project-body">
+              <p>
+                Dual carriageway upgrading with new grade-separated interchange, realignment of existing junctions and
+                associated drainage and slope protection works.
+              </p>
+              <ul>
+                <li>Geometric design for mainline, ramps and local access roads.</li>
+                <li>Pavement design, road safety furniture and traffic management planning.</li>
+                <li>Construction supervision and coordination with local authorities.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- CARD 2 -->
+          <article class="project-card">
+            <div class="project-tag-row">
+              <div class="project-pill">Bridge &amp; Structural Works</div>
+              <div class="project-count"><strong class="card-index">02</strong> / <span class="card-total">08</span></div>
+            </div>
+            <h3 class="project-title">River Bridge &amp; Approach Road Improvement</h3>
+            <div class="project-meta">
+              <span><span class="project-meta-label">Client</span> State public works department</span>
+              <span><span class="project-meta-label">Scope</span> Detailed design</span>
+              <span><span class="project-meta-label">Location</span> Malaysia</span>
+            </div>
+            <div class="project-body">
+              <p>
+                Design of a new multi-span reinforced concrete bridge and realigned approaches to replace an existing
+                substandard crossing.
+              </p>
+              <ul>
+                <li>Structural analysis of bridge superstructure and substructure.</li>
+                <li>Hydraulic assessment of river flow and scour protection details.</li>
+                <li>Design of approach embankments, retaining walls and drainage.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- CARD 3 -->
+          <article class="project-card">
+            <div class="project-tag-row">
+              <div class="project-pill">Urban Roads &amp; Access</div>
+              <div class="project-count"><strong class="card-index">03</strong> / <span class="card-total">08</span></div>
+            </div>
+            <h3 class="project-title">Access Road to Industrial Development</h3>
+            <div class="project-meta">
+              <span><span class="project-meta-label">Client</span> Private developer</span>
+              <span><span class="project-meta-label">Scope</span> Study &amp; detailed design</span>
+              <span><span class="project-meta-label">Location</span> Malaysia</span>
+            </div>
+            <div class="project-body">
+              <p>
+                New access connection from a federal route into an industrial estate, including junction upgrades and
+                internal circulation.
+              </p>
+              <ul>
+                <li>Traffic impact study and capacity analysis for existing junction.</li>
+                <li>Design of turning lanes, roundabout / signalised junction options.</li>
+                <li>Drainage, street lighting and utility coordination.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- CARD 4 -->
+          <article class="project-card">
+            <div class="project-tag-row">
+              <div class="project-pill">Township &amp; Infrastructure</div>
+              <div class="project-count"><strong class="card-index">04</strong> / <span class="card-total">08</span></div>
+            </div>
+            <h3 class="project-title">Infrastructure for Mixed Development Township</h3>
+            <div class="project-meta">
+              <span><span class="project-meta-label">Client</span> Property developer</span>
+              <span><span class="project-meta-label">Scope</span> Full infrastructure design</span>
+              <span><span class="project-meta-label">Location</span> Malaysia</span>
+            </div>
+            <div class="project-body">
+              <p>
+                Platform earthworks, drainage, water supply, sewerage and road network design for a multi-phase
+                residential and commercial township.
+              </p>
+              <ul>
+                <li>Earthworks and platform level optimisation.</li>
+                <li>Stormwater drainage network and detention / retention facilities.</li>
+                <li>Utilities corridors and road hierarchy planning.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- CARD 5 -->
+          <article class="project-card">
+            <div class="project-tag-row">
+              <div class="project-pill">Industrial Facilities</div>
+              <div class="project-count"><strong class="card-index">05</strong> / <span class="card-total">08</span></div>
+            </div>
+            <h3 class="project-title">Civil &amp; Structural Works for Industrial Plant</h3>
+            <div class="project-meta">
+              <span><span class="project-meta-label">Client</span> Industrial operator</span>
+              <span><span class="project-meta-label">Scope</span> Structural &amp; civil design</span>
+              <span><span class="project-meta-label">Location</span> Malaysia</span>
+            </div>
+            <div class="project-body">
+              <p>
+                Structural and civil engineering design for an industrial processing facility, including building
+                frames, equipment foundations and external works.
+              </p>
+              <ul>
+                <li>Factory building frame design in steel and reinforced concrete.</li>
+                <li>Machine foundations and heavy-duty floor slabs.</li>
+                <li>Roads, drainage and ancillary structures within the plant.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- CARD 6 -->
+          <article class="project-card">
+            <div class="project-tag-row">
+              <div class="project-pill">Drainage &amp; Flood Mitigation</div>
+              <div class="project-count"><strong class="card-index">06</strong> / <span class="card-total">08</span></div>
+            </div>
+            <h3 class="project-title">River Improvement &amp; Flood Relief Channel</h3>
+            <div class="project-meta">
+              <span><span class="project-meta-label">Client</span> Local authority</span>
+              <span><span class="project-meta-label">Scope</span> Detailed design &amp; supervision</span>
+              <span><span class="project-meta-label">Location</span> Malaysia</span>
+            </div>
+            <div class="project-body">
+              <p>
+                Channel improvement and construction of a relief channel to reduce flooding risk in a developed
+                catchment.
+              </p>
+              <ul>
+                <li>Hydraulic modelling of existing and proposed channel.</li>
+                <li>Design of river training works, culverts and outfalls.</li>
+                <li>Monitoring of construction and environmental mitigation measures.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- CARD 7 -->
+          <article class="project-card">
+            <div class="project-tag-row">
+              <div class="project-pill">Marine &amp; Coastal</div>
+              <div class="project-count"><strong class="card-index">07</strong> / <span class="card-total">08</span></div>
+            </div>
+            <h3 class="project-title">Coastal Revetment &amp; Access Road</h3>
+            <div class="project-meta">
+              <span><span class="project-meta-label">Client</span> Government agency</span>
+              <span><span class="project-meta-label">Scope</span> Design &amp; supervision</span>
+              <span><span class="project-meta-label">Location</span> Coastal Malaysia</span>
+            </div>
+            <div class="project-body">
+              <p>
+                Design and supervision of rock revetment works and associated access road to protect eroding shoreline.
+              </p>
+              <ul>
+                <li>Coastal protection layout and revetment cross-section design.</li>
+                <li>Integration with existing road network and drainage outlets.</li>
+                <li>On-site supervision of armour rock placement and quality control.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- CARD 8 -->
+          <article class="project-card">
+            <div class="project-tag-row">
+              <div class="project-pill">Building Audit &amp; Assessment</div>
+              <div class="project-count"><strong class="card-index">08</strong> / <span class="card-total">08</span></div>
+            </div>
+            <h3 class="project-title">Structural Condition Assessment of Existing Building</h3>
+            <div class="project-meta">
+              <span><span class="project-meta-label">Client</span> Building owner</span>
+              <span><span class="project-meta-label">Scope</span> Building audit</span>
+              <span><span class="project-meta-label">Location</span> Malaysia</span>
+            </div>
+            <div class="project-body">
+              <p>
+                Assessment of an existing building showing signs of distress, with recommendations for repair and
+                strengthening.
+              </p>
+              <ul>
+                <li>Visual inspection and mapping of cracks and defects.</li>
+                <li>Review of available drawings and load paths.</li>
+                <li>Reporting on structural adequacy and remedial options.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Duplicate more project-card blocks here for all 38 projects -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-strip">
+      <div class="container cta-inner">
+        <div>
+          <div class="cta-title">Want to discuss a project similar to these?</div>
+          <div class="cta-sub">
+            Share your proposed location and project type, and Perunding Ihsan can highlight relevant past experience
+            and a recommended scope of services.
+          </div>
+        </div>
+        <a href="contact.html" class="btn btn-primary">Talk to our team</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Perunding Ihsan Sdn Bhd. All rights reserved.</p>
+      <a href="#top" class="back-to-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+
+    if (navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        nav.classList.toggle('nav-open');
+      });
+
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('nav-open');
+        });
+      });
+    }
+
+    // Current year in footer
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+
+    // Stacked card animation on scroll: only one visible at a time
+    const cards = document.querySelectorAll('.project-card');
+    const progressLabel = document.getElementById('stack-progress-label');
+    const progressBarFill = document.getElementById('stack-bar-fill');
+
+    const total = cards.length;
+    cards.forEach((card, idx) => {
+      const idxEl = card.querySelector('.card-index');
+      const totalEl = card.querySelector('.card-total');
+      if (idxEl) idxEl.textContent = String(idx + 1).padStart(2,'0');
+      if (totalEl) totalEl.textContent = String(total).padStart(2,'0');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          cards.forEach(c => c.dataset.active = 'false');
+          entry.target.dataset.active = 'true';
+
+          const index = Array.from(cards).indexOf(entry.target);
+          const current = index + 1;
+
+          if (progressLabel) {
+            progressLabel.textContent = `Project ${String(current).padStart(2,'0')}`;
+          }
+          if (progressBarFill) {
+            progressBarFill.style.width = (current / total * 100) + '%';
+          }
+        }
+      });
+    }, { threshold: 0.55 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+</body>
+</html>

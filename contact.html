@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact – Perunding Ihsan Sdn Bhd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#05060b;
+      --bg-soft:#0b1020;
+      --surface:#0b1020;
+      --surface-soft:#151826;
+      --accent:#f59e0b;
+      --accent-soft:rgba(245,158,11,0.14);
+      --text:#f9fafb;
+      --muted:#9ca3af;
+      --border:#1f2937;
+      --radius-lg:18px;
+      --radius-xl:24px;
+      --shadow-soft:0 22px 55px rgba(0,0,0,0.6);
+    }
+
+    *,
+    *::before,
+    *::after{
+      box-sizing:border-box;
+    }
+
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:"Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:radial-gradient(circle at top left,#111827,#020617);
+      color:var(--text);
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:100%;
+      max-width:1180px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* ========== TOPBAR / NAVIGATION ========== */
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:40;
+      background:rgba(5,6,11,0.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(15,23,42,0.9);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 0 10px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--text);
+    }
+
+    .brand-logo{
+      border-radius:12px;
+      background:#ffffff;
+      padding:4px 6px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .logo{
+      height:30px;
+      width:auto;
+      display:block;
+    }
+
+    .brand-text-wrap{
+      display:flex;
+      flex-direction:column;
+      line-height:1.2;
+    }
+
+    .brand-name{
+      font-weight:700;
+      font-size:.95rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .brand-tagline{
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+
+    .nav a{
+      font-size:.8rem;
+      font-weight:500;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+      text-decoration:none;
+      padding:4px 0;
+    }
+
+    .nav a:hover{
+      color:var(--text);
+    }
+
+    .nav a.nav-active{
+      color:var(--accent);
+    }
+
+    .nav-toggle{
+      display:none;
+      flex-direction:column;
+      gap:4px;
+      background:none;
+      border:none;
+      padding:6px 0 6px 10px;
+      margin-left:10px;
+      cursor:pointer;
+    }
+
+    .nav-toggle span{
+      display:block;
+      width:20px;
+      height:2px;
+      border-radius:99px;
+      background:var(--text);
+    }
+
+    @media (max-width: 840px){
+      .nav{
+        position:fixed;
+        inset:56px 16px auto 16px;
+        flex-direction:column;
+        align-items:flex-start;
+        padding:16px 16px 14px;
+        background:rgba(15,23,42,0.98);
+        border-radius:18px;
+        border:1px solid rgba(31,41,55,0.9);
+        box-shadow:var(--shadow-soft);
+        max-height:0;
+        overflow:hidden;
+        opacity:0;
+        pointer-events:none;
+        transition:max-height .22s ease, opacity .16s ease;
+      }
+
+      .nav-open{
+        max-height:260px;
+        opacity:1;
+        pointer-events:auto;
+      }
+
+      .nav-toggle{
+        display:flex;
+      }
+
+      .topbar-inner{
+        padding:10px 0 9px;
+      }
+    }
+
+    /* ========== GENERIC ELEMENTS ========== */
+
+    .section{
+      padding:80px 0;
+    }
+
+    .section-eyebrow{
+      text-transform:uppercase;
+      letter-spacing:.23em;
+      font-size:.75rem;
+      color:var(--accent);
+      margin-bottom:14px;
+      font-weight:600;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 10px;
+      line-height:1.15;
+    }
+
+    h1{
+      font-size:clamp(2.2rem, 3.1vw, 3rem);
+      letter-spacing:.02em;
+    }
+
+    h2{
+      font-size:clamp(1.5rem, 2.3vw, 2.1rem);
+    }
+
+    h3{
+      font-size:1rem;
+    }
+
+    p{
+      margin:0 0 10px;
+      font-size:1rem;
+      line-height:1.7;
+      color:var(--text);
+      text-align:justify;
+    }
+
+    .lead{
+      font-size:1.05rem;
+      max-width:640px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 12px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.7);
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+    }
+
+    .pill-dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:var(--accent);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 20px;
+      border-radius:999px;
+      border:1px solid transparent;
+      text-decoration:none;
+      font-size:.85rem;
+      font-weight:600;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      cursor:pointer;
+      gap:8px;
+      white-space:nowrap;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#f97316,#fde047);
+      color:#111827;
+      box-shadow:0 18px 35px rgba(15,23,42,0.8);
+    }
+
+    .btn-primary:hover{
+      filter:brightness(1.05);
+    }
+
+    /* ========== HERO ========== */
+
+    .subpage-hero{
+      position:relative;
+      padding:90px 0 70px;
+      background:
+        radial-gradient(circle at top left, rgba(245,158,11,0.32), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(30,64,175,0.45), transparent 60%),
+        linear-gradient(to bottom,#020617,#020617);
+      overflow:hidden;
+    }
+
+    .subpage-hero::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background:url("images/projects.png") right center/cover no-repeat;
+      opacity:0.18;
+      mix-blend-mode:screen;
+      pointer-events:none;
+    }
+
+    .subpage-hero-inner{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+      gap:36px;
+      align-items:flex-start;
+    }
+
+    .hero-summary-card{
+      background:rgba(15,23,42,0.96);
+      border-radius:var(--radius-xl);
+      padding:18px 20px 16px;
+      border:1px solid rgba(55,65,81,0.9);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .hero-summary-row{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      font-size:.9rem;
+      text-align:justify;
+    }
+
+    @media (max-width: 880px){
+      .subpage-hero-inner{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 640px){
+      .subpage-hero{
+        padding:78px 0 56px;
+      }
+
+      h1{
+        font-size:2rem;
+      }
+
+      .lead{
+        font-size:.98rem;
+      }
+    }
+
+    /* ========== CONTACT LAYOUT ========== */
+
+    .contact-section{
+      background:#020617;
+    }
+
+    .contact-layout{
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,1.1fr);
+      gap:26px;
+      align-items:flex-start;
+    }
+
+    @media (max-width: 880px){
+      .contact-layout{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .contact-card{
+      background:rgba(15,23,42,0.97);
+      border-radius:var(--radius-xl);
+      padding:18px 20px 18px;
+      border:1px solid rgba(55,65,81,0.9);
+      box-shadow:0 18px 45px rgba(0,0,0,0.65);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .contact-card h2{
+      margin-bottom:4px;
+    }
+
+    .contact-row{
+      display:grid;
+      grid-template-columns:110px minmax(0,1fr);
+      gap:6px 12px;
+      font-size:.95rem;
+    }
+
+    .contact-label{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+    }
+
+    .contact-value{
+      font-size:.98rem;
+      text-align:justify;
+    }
+
+    .contact-phones{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+
+    .contact-value a{
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .contact-value a:hover{
+      color:var(--accent);
+    }
+
+    .contact-note{
+      font-size:.9rem;
+      color:var(--muted);
+      text-align:justify;
+    }
+
+    /* Form */
+
+    .form-card{
+      background:rgba(15,23,42,0.97);
+      border-radius:var(--radius-xl);
+      padding:18px 20px 20px;
+      border:1px solid rgba(55,65,81,0.9);
+      box-shadow:0 18px 45px rgba(0,0,0,0.65);
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px 16px;
+    }
+
+    @media (max-width: 640px){
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .form-field{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+
+    .form-label{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select{
+      background:#020617;
+      border-radius:10px;
+      border:1px solid rgba(55,65,81,0.9);
+      padding:9px 10px;
+      font-size:.95rem;
+      color:var(--text);
+      outline:none;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 0 1px rgba(245,158,11,0.4);
+    }
+
+    .form-textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+
+    .form-helper{
+      font-size:.78rem;
+      color:var(--muted);
+      text-align:justify;
+    }
+
+    .form-actions{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:16px;
+    }
+
+    .form-status{
+      font-size:.85rem;
+      color:var(--muted);
+      text-align:justify;
+    }
+
+    /* ========== CTA & FOOTER ========== */
+
+    .cta-strip{
+      padding:40px 0 50px;
+      border-top:1px solid rgba(15,23,42,0.9);
+      background:#020617;
+    }
+
+    .cta-inner{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .cta-title{
+      font-size:1.1rem;
+      font-weight:600;
+    }
+
+    .cta-sub{
+      font-size:.95rem;
+      color:var(--text);
+      text-align:justify;
+    }
+
+    @media (max-width: 640px){
+      .cta-title{
+        font-size:1rem;
+      }
+    }
+
+    .site-footer{
+      border-top:1px solid rgba(31,41,55,0.9);
+      background:#020617;
+      margin-top:auto;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:18px 20px 20px;
+      font-size:.8rem;
+      color:var(--muted);
+    }
+
+    .back-to-top{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:.8rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .back-to-top:hover{
+      color:var(--accent);
+    }
+
+    @media (max-width: 640px){
+      .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+  <header class="topbar" id="top">
+    <div class="container topbar-inner">
+      <a href="index.html#home" class="brand">
+        <div class="brand-logo">
+          <img src="images/logo.png" alt="Perunding Ihsan Sdn Bhd" class="logo">
+        </div>
+        <div class="brand-text-wrap">
+          <span class="brand-name">Perunding Ihsan</span>
+          <span class="brand-tagline">Project Management &amp; Consulting Engineers</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html#home">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="service.html">Our Service</a>
+        <a href="our-work.html">Our Work</a>
+        <a href="expertise.html">Expertise</a>
+        <a href="contact.html" class="nav-active">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="subpage-hero">
+      <div class="container subpage-hero-inner">
+        <div>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span>Contact</span>
+          </div>
+          <h1>Get in touch with Perunding Ihsan.</h1>
+          <p class="lead">
+            Reach out to discuss proposed highways, structures, infrastructure or coastal works, or to request a
+            proposal for consulting and supervision services.
+          </p>
+          <p>
+            Basic project information such as location, type of development and expected timeline helps the team to
+            respond with relevant experience and a suitable scope of services.
+          </p>
+        </div>
+
+        <aside class="hero-summary-card">
+          <div class="hero-summary-row">
+            <p>
+              <strong>Office hours</strong><br>
+              Monday to Friday, 9.00&nbsp;am – 5.30&nbsp;pm (excluding public holidays).
+            </p>
+            <p>
+              <strong>Response time</strong><br>
+              Enquiries are normally reviewed within a few working days. For urgent matters,
+              contact the mobile numbers listed below.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CONTACT DETAILS + FORM -->
+    <section class="section contact-section">
+      <div class="container contact-layout">
+        <!-- Company details -->
+        <div class="contact-card">
+          <div class="section-eyebrow">Office details</div>
+          <h2>Perunding Ihsan Sdn Bhd</h2>
+
+          <div class="contact-row">
+            <div class="contact-label">Office address</div>
+            <div class="contact-value">
+              22-A, Jalan 6/6<br>
+              Pandan Commercial Park<br>
+              55100 Kuala Lumpur<br>
+              Malaysia
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-label">Telephone</div>
+            <div class="contact-value contact-phones">
+              <span>+60 16&nbsp;409&nbsp;9559</span>
+              <span>+60 11&nbsp;6992&nbsp;0936</span>
+              <span>+60 18&nbsp;400&nbsp;8194</span>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-label">Fax</div>
+            <div class="contact-value">
+              03&nbsp;–&nbsp;4291&nbsp;1071
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">
+              <a href="mailto:azmiali89@gmail.com">azmiali89@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-label">Key contacts</div>
+            <div class="contact-value">
+              Ir. Mohd Azmi Bin Mohd Ali &mdash; Principal<br>
+              Ahmad Zulkarnain Bin Ahmad Tajuddin &mdash; Associate
+            </div>
+          </div>
+
+          <p class="contact-note">
+            When sharing project information, please indicate any key milestones or submission dates so that the
+            team can plan reviews and meetings accordingly.
+          </p>
+        </div>
+
+        <!-- Form -->
+        <div class="form-card">
+          <div class="section-eyebrow">Enquiry form</div>
+          <h2>Share your project details.</h2>
+          <p>
+            Provide a brief outline of your project and the type of services required. The team will follow up
+            using the contact details provided.
+          </p>
+
+         <form id="contact-form" action="send-contact.php" method="post">
+            <div class="form-grid">
+              <div class="form-field">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-input" id="name" name="name" type="text" required />
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="organisation">Organisation</label>
+                <input class="form-input" id="organisation" name="organisation" type="text" />
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-input" id="email" name="email" type="email" required />
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="phone">Phone</label>
+                <input class="form-input" id="phone" name="phone" type="tel" />
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="project-type">Project type</label>
+                <select class="form-select" id="project-type" name="project-type">
+                  <option value="">Select an option</option>
+                  <option>Highway / interchange</option>
+                  <option>Bridge / structural works</option>
+                  <option>Township / mixed development</option>
+                  <option>Industrial facility</option>
+                  <option>Drainage / flood mitigation</option>
+                  <option>Marine / coastal works</option>
+                  <option>Other civil / structural works</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="location">Project location</label>
+                <input class="form-input" id="location" name="location" type="text" placeholder="State / district" />
+              </div>
+            </div>
+
+            <div class="form-field" style="margin-top:14px;">
+              <label class="form-label" for="message">Brief description</label>
+              <textarea class="form-textarea" id="message" name="message" required></textarea>
+              <div class="form-helper">
+                Include information such as scope of works, current stage and any target dates for design or construction.
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Send enquiry</button>
+              <div class="form-status" id="form-status">
+                Fields marked with * are required. Personal data will be used only for responding to your enquiry.
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-strip">
+      <div class="container cta-inner">
+        <div>
+          <div class="cta-title">Prefer to speak directly?</div>
+          <div class="cta-sub">
+            Contact the mobile numbers listed above to discuss urgent project matters or to arrange a meeting with
+            the principal or associate engineer.
+          </div>
+        </div>
+        <a href="tel:+60164099559" class="btn btn-primary">Call the office</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Perunding Ihsan Sdn Bhd. All rights reserved.</p>
+      <a href="#top" class="back-to-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+
+    if (navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        nav.classList.toggle('nav-open');
+      });
+
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('nav-open');
+        });
+      });
+    }
+
+    // Current year in footer
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+
+  </script>
+</body>
+</html>
